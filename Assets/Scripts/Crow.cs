@@ -12,11 +12,15 @@ public class Crow : MonoBehaviour
 
     private Vector3 swoopDir;
     private float swoopTimer = 0f;
+    Vector3 moveDir = Vector3.zero;
+    private ShinyObject objectHeld;
+    private bool inAltar = false;
+    private Rigidbody myRigidbody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        myRigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -26,9 +30,20 @@ public class Crow : MonoBehaviour
         Swoop();
     }
 
+    private void DropObject() {
+        objectHeld.transform.parent = null;
+        objectHeld.GetComponent<Rigidbody>().isKinematic = false;
+        objectHeld.GetComponent<Collider>().enabled = true;
+        objectHeld = null;
+    }
+
     private void Swoop() {
         if (swoopTimer <= 0f)
             return;
+
+        if (inAltar && objectHeld != null) {
+            DropObject();
+        }
 
         swoopTimer -= Time.deltaTime;
 
@@ -46,8 +61,7 @@ public class Crow : MonoBehaviour
         transform.position = new Vector3(transform.position.x, f + Height, transform.position.z);
     }
 
-    private void Move() {
-        Vector3 moveDir = Vector3.zero;
+    private void ChangeDir() {
         if (Input.GetKey(KeyCode.W)) {
             Vector3 camForward = Camera.main.transform.forward;
             moveDir += new Vector3(camForward.x, 0f, camForward.z);
@@ -64,18 +78,50 @@ public class Crow : MonoBehaviour
             Vector3 rightCam = Camera.main.transform.right;
             moveDir += new Vector3(rightCam.x, 0f, rightCam.z);
         }
-
         moveDir = moveDir.normalized;
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+    private void Move() {
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+            ChangeDir();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && swoopTimer <= 0f) {
             Swoop(moveDir);
         }
 
         transform.position = transform.position + moveDir * Time.deltaTime * Speed;
+        myRigidbody.velocity = Vector3.zero;
     }
 
     private void Swoop(Vector3 dir) {
         swoopDir = dir;
         swoopTimer = SwoopTime;
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (swoopTimer <= 0f || objectHeld != null)
+            return;
+
+        if (!collision.collider.CompareTag("Shiny"))
+            return;
+
+        objectHeld = collision.collider.gameObject.GetComponent<ShinyObject>();
+        objectHeld.transform.parent = transform;
+        objectHeld.transform.localPosition = Vector3.zero;
+        objectHeld.GetComponent<Rigidbody>().isKinematic = true;
+        objectHeld.GetComponent<Collider>().enabled = false;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Altar")) {
+            inAltar = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Altar")) {
+            inAltar = false;
+        }
     }
 }
