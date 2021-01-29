@@ -5,6 +5,13 @@ using UnityEngine;
 public class Crow : MonoBehaviour
 {
     public float Speed = 1f;
+    public float SwoopTime = 1f;
+    public float SwoopAmount = 0.5f;
+    public float Power = 2f;
+    public float Height = 0.5f;
+
+    private Vector3 swoopDir;
+    private float swoopTimer = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +23,27 @@ public class Crow : MonoBehaviour
     void Update()
     {
         Move();
+        Swoop();
+    }
+
+    private void Swoop() {
+        if (swoopTimer <= 0f)
+            return;
+
+        swoopTimer -= Time.deltaTime;
+
+        float f = swoopTimer / SwoopTime;
+        if (f > 0.5f) {
+            f = f - 0.5f;
+        }
+        else {
+            f = 0.5f - f;
+        }
+        f = f * 2f;
+        f = Mathf.Pow(f, Power);
+        f = f * SwoopAmount;
+
+        transform.position = new Vector3(transform.position.x, f + Height, transform.position.z);
     }
 
     private void Move() {
@@ -37,6 +65,17 @@ public class Crow : MonoBehaviour
             moveDir += new Vector3(rightCam.x, 0f, rightCam.z);
         }
 
-        transform.position = transform.position + moveDir.normalized * Time.deltaTime * Speed;
+        moveDir = moveDir.normalized;
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Swoop(moveDir);
+        }
+
+        transform.position = transform.position + moveDir * Time.deltaTime * Speed;
+    }
+
+    private void Swoop(Vector3 dir) {
+        swoopDir = dir;
+        swoopTimer = SwoopTime;
     }
 }
