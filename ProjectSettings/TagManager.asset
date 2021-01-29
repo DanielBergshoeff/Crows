@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Shiny
   - Altar
+  - Arm
+  - EnemySpawn
+  - ObjectSpawn
   layers:
   - Default
   - TransparentFX

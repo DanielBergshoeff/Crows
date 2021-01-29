@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Crow : MonoBehaviour
 {
+    public Light MyLight;
+
     public float Speed = 1f;
     public float SwoopTime = 1f;
     public float SwoopAmount = 0.5f;
@@ -11,7 +13,7 @@ public class Crow : MonoBehaviour
     public float Height = 0.5f;
 
     private Vector3 swoopDir;
-    private float swoopTimer = 0f;
+    public float swoopTimer = 0f;
     Vector3 moveDir = Vector3.zero;
     private ShinyObject objectHeld;
     private bool inAltar = false;
@@ -26,8 +28,17 @@ public class Crow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateLight();
         Move();
         Swoop();
+    }
+
+    private void UpdateLight() {
+        if (Input.GetKeyDown(KeyCode.E))
+            MyLight.enabled = true;
+        else if (Input.GetKeyUp(KeyCode.E)) {
+            MyLight.enabled = false;
+        }
     }
 
     private void DropObject() {
