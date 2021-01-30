@@ -36,7 +36,7 @@ public class Crow : MonoBehaviour
     public float swoopTimer = 0f;
     Vector3 moveDir = Vector3.zero;
     Vector3 targetMoveDir = Vector3.zero;
-    private ShinyObject objectHeld;
+    public ShinyObject ObjectHeld;
     private bool inAltar = false;
     private Rigidbody myRigidbody;
     private AudioSource myAudioSource;
@@ -104,17 +104,17 @@ public class Crow : MonoBehaviour
     }
 
     private void DropObject() {
-        objectHeld.transform.parent = null;
-        objectHeld.GetComponent<Rigidbody>().isKinematic = false;
-        objectHeld.GetComponent<Collider>().enabled = true;
-        objectHeld = null;
+        ObjectHeld.transform.parent = null;
+        ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
+        ObjectHeld.GetComponent<Collider>().enabled = true;
+        ObjectHeld = null;
     }
 
     private void Swoop() {
         if (swoopTimer <= 0f)
             return;
 
-        if (inAltar && objectHeld != null) {
+        if (inAltar && ObjectHeld != null) {
             DropObject();
         }
 
@@ -206,32 +206,32 @@ public class Crow : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (swoopTimer <= 0f || objectHeld != null)
+        if (swoopTimer <= 0f || ObjectHeld != null)
             return;
 
         if (!collision.collider.CompareTag("Shiny"))
             return;
 
-        objectHeld = collision.collider.gameObject.GetComponent<ShinyObject>();
-        objectHeld.transform.parent = transform;
-        objectHeld.transform.localPosition = Vector3.zero;
-        objectHeld.GetComponent<Rigidbody>().isKinematic = true;
-        objectHeld.GetComponent<Collider>().enabled = false;
+        ObjectHeld = collision.collider.gameObject.GetComponent<ShinyObject>();
+        ObjectHeld.transform.parent = transform;
+        ObjectHeld.transform.localPosition = Vector3.zero;
+        ObjectHeld.GetComponent<Rigidbody>().isKinematic = true;
+        ObjectHeld.GetComponent<Collider>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Altar")) {
             inAltar = true;
         }
-        else if (other.CompareTag("Glimmer") && objectHeld == null) {
+        else if (other.CompareTag("Glimmer") && ObjectHeld == null) {
             Glimmer g = other.gameObject.GetComponent<Glimmer>();
             GameObject go = Instantiate(g.MyShinyObjectPrefab);
 
-            objectHeld = go.GetComponent<ShinyObject>();
-            objectHeld.transform.parent = transform;
-            objectHeld.transform.localPosition = Vector3.zero;
-            objectHeld.GetComponent<Rigidbody>().isKinematic = true;
-            objectHeld.GetComponent<Collider>().enabled = false;
+            ObjectHeld = go.GetComponent<ShinyObject>();
+            ObjectHeld.transform.parent = transform;
+            ObjectHeld.transform.localPosition = Vector3.zero;
+            ObjectHeld.GetComponent<Rigidbody>().isKinematic = true;
+            ObjectHeld.GetComponent<Collider>().enabled = false;
 
             myAudioSource.PlayOneShot(PickupSound);
 

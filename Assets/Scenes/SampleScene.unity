@@ -910,7 +910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660628702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.27, y: 1.17, z: -1.4}
+  m_LocalPosition: {x: 3.27, y: 1.693, z: -1.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2501,13 +2501,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1500992723}
   - component: {fileID: 1500992722}
+  - component: {fileID: 1500992724}
   m_Layer: 0
   m_Name: Narrative
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1500992722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,6 +2522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroPoem: {fileID: 11400000, guid: 26ae8242d1e939946acdda95a33a186d, type: 2}
+  Emptyhanded: {fileID: 0}
+  FirstItem: {fileID: 0}
   NarrativeText: {fileID: 907915198}
   TimePerCharacter: 0.1
   TimePerSentence: 3
@@ -2533,13 +2536,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500992721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.78, y: 0.88, z: -1.38}
+  m_LocalScale: {x: 2.3692, y: 1, z: 3.5924447}
   m_Children:
   - {fileID: 91006404}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1500992724
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500992721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1544057778
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: 0.0000000960667, y: -0.9396927, z: 0.3420201, w: 0.00000026394113}
-  m_LocalPosition: {x: 3.321, y: 2.41, z: 0.38}
+  m_LocalPosition: {x: 3.32, y: 3.01, z: 1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2818,7 +2834,7 @@ PrefabInstance:
     - target: {fileID: 7389721601253173097, guid: bba2b238466b5da4b98b1a1f9b4be5fe,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 7389721601253173097, guid: bba2b238466b5da4b98b1a1f9b4be5fe,
         type: 3}
