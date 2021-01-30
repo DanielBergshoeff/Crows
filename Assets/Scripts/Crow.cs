@@ -7,6 +7,7 @@ public class Crow : MonoBehaviour
     public Light MyLight;
 
     public float Speed = 1f;
+    public float RotateSpeed = 3f;
     public float SwoopTime = 1f;
     public float SwoopAmount = 0.5f;
     public float Power = 2f;
@@ -17,6 +18,7 @@ public class Crow : MonoBehaviour
     private Vector3 swoopDir;
     public float swoopTimer = 0f;
     Vector3 moveDir = Vector3.zero;
+    Vector3 targetMoveDir = Vector3.zero;
     private ShinyObject objectHeld;
     private bool inAltar = false;
     private Rigidbody myRigidbody;
@@ -75,25 +77,29 @@ public class Crow : MonoBehaviour
     }
 
     private void ChangeDir() {
+        targetMoveDir = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) {
             Vector3 camForward = Camera.main.transform.forward;
-            moveDir += new Vector3(camForward.x, 0f, camForward.z);
+            targetMoveDir += new Vector3(camForward.x, 0f, camForward.z);
         }
         if (Input.GetKey(KeyCode.S)) {
             Vector3 camBackward = -Camera.main.transform.forward;
-            moveDir += new Vector3(camBackward.x, 0f, camBackward.z);
+            targetMoveDir += new Vector3(camBackward.x, 0f, camBackward.z);
         }
         if (Input.GetKey(KeyCode.A)) {
             Vector3 leftCam = -Camera.main.transform.right;
-            moveDir += new Vector3(leftCam.x, 0f, leftCam.z);
+            targetMoveDir += new Vector3(leftCam.x, 0f, leftCam.z);
         }
         if (Input.GetKey(KeyCode.D)) {
             Vector3 rightCam = Camera.main.transform.right;
-            moveDir += new Vector3(rightCam.x, 0f, rightCam.z);
+            targetMoveDir += new Vector3(rightCam.x, 0f, rightCam.z);
         }
-        moveDir = moveDir.normalized;
 
-        CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+        targetMoveDir = targetMoveDir.normalized;
+
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetMoveDir, Time.deltaTime * RotateSpeed, 0f));
+        //CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
+        //transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }
 
     private void Move() {
@@ -105,7 +111,7 @@ public class Crow : MonoBehaviour
             Swoop(moveDir);
         }
 
-        transform.position = transform.position + moveDir * Time.deltaTime * Speed;
+        transform.position = transform.position + transform.forward * Time.deltaTime * Speed;
         myRigidbody.velocity = Vector3.zero;
     }
 
