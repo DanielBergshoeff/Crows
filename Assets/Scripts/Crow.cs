@@ -13,9 +13,14 @@ public class Crow : MonoBehaviour
     public float SwoopAmount = 0.5f;
     public float Power = 2f;
     public float Height = 0.5f;
+    public float TimePerFlap = 1f;
+    public float MinTimeYap = 3f;
+    public float MaxTimeYap = 5f;
 
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
+    public List<AudioClip> WingFlapSounds;
+    public List<AudioClip> YapSounds;
     public AudioClip DeathSound;
 
     public Transform CrowImage;
@@ -29,6 +34,9 @@ public class Crow : MonoBehaviour
     private Rigidbody myRigidbody;
     private AudioSource myAudioSource;
 
+    private float flapTimer = 0.1f;
+    private float yapTimer = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,9 +47,31 @@ public class Crow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Narrative.InPoem)
+            return;
+
         UpdateLight();
         Move();
         Swoop();
+        UpdateTimers();
+    }
+
+    private void UpdateTimers() {
+        if (flapTimer > 0f) {
+            flapTimer -= Time.deltaTime;
+            if (flapTimer <= 0f) {
+                myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
+                flapTimer = TimePerFlap;
+            }
+
+        }
+        if (yapTimer > 0f) {
+            yapTimer -= Time.deltaTime;
+            if(yapTimer <= 0f) {
+                myAudioSource.PlayOneShot(YapSounds[Random.Range(0, YapSounds.Count)]);
+                yapTimer = Random.Range(MinTimeYap, MaxTimeYap);
+            }
+        }
     }
 
     public void GetHit() {
@@ -95,7 +125,7 @@ public class Crow : MonoBehaviour
         transform.position = new Vector3(transform.position.x, f + Height, transform.position.z);
     }
 
-    private void ChangeDir() {
+    private void ChangeDir() {/*
         targetMoveDir = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) {
             Vector3 camForward = Camera.main.transform.forward;
@@ -116,7 +146,14 @@ public class Crow : MonoBehaviour
 
         targetMoveDir = targetMoveDir.normalized;
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetMoveDir, Time.deltaTime * RotateSpeed, 0f));
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetMoveDir, Time.deltaTime * RotateSpeed, 0f));*/
+
+        if (Input.GetKey(KeyCode.A)) {
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, -transform.right, Time.deltaTime * RotateSpeed, 0f));
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, transform.right, Time.deltaTime * RotateSpeed, 0f));
+        }
         //CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
         //transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }

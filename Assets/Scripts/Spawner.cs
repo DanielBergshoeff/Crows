@@ -26,6 +26,9 @@ public class Spawner : MonoBehaviour
     }
 
     private void SpawnFromPositions(List<GameObject> prefabs, List<GameObject> positions, int amount) {
+        if (positions.Count < amount)
+            return;
+
         for (int i = 0; i < amount; i++) {
             GameObject pos = positions[Random.Range(0, positions.Count)];
             GameObject go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]);
@@ -35,6 +38,9 @@ public class Spawner : MonoBehaviour
     }
 
     private void SpawnGlimmers() {
+        if (ObjectPositions.Count < AmountOfObjects)
+            return;
+
         for (int i = 0; i < AmountOfObjects; i++) {
             GameObject pos = ObjectPositions[Random.Range(0, ObjectPositions.Count)];
             GameObject go = Instantiate(GlimmerPrefab);
