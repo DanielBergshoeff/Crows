@@ -138,6 +138,18 @@ public class Crow : MonoBehaviour
         if (other.CompareTag("Altar")) {
             inAltar = true;
         }
+        else if (other.CompareTag("Glimmer") && objectHeld == null) {
+            Glimmer g = other.gameObject.GetComponent<Glimmer>();
+            GameObject go = Instantiate(g.MyShinyObjectPrefab);
+
+            objectHeld = go.GetComponent<ShinyObject>();
+            objectHeld.transform.parent = transform;
+            objectHeld.transform.localPosition = Vector3.zero;
+            objectHeld.GetComponent<Rigidbody>().isKinematic = true;
+            objectHeld.GetComponent<Collider>().enabled = false;
+
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other) {
