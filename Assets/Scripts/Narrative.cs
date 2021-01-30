@@ -79,6 +79,7 @@ public class Narrative : MonoBehaviour
             PlayPoem(Emptyhanded);
         }
         else {
+            c.ObjectHeld.tag = "Untagged";
             c.DropObject();
 
             itemsBrought++;
