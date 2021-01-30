@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3001424360512367089}
   - component: {fileID: 3001424360512367102}
   - component: {fileID: 3001424360512367103}
+  - component: {fileID: 5297689250564852491}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Player
@@ -181,10 +182,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MyLight: {fileID: 3001424360687113432}
   Speed: 1
+  BonusSpeed: 1
+  MaxBonusFlaps: 3
+  ReduceBonusSpeed: 1
+  BonusFlapRecoveryTime: 2
+  RotateSpeed: 3
   SwoopTime: 1
   SwoopAmount: 0.4
   Power: 2
   Height: 0.1
+  TimePerFlap: 1
+  MinTimeYap: 3
+  MaxTimeYap: 5
+  PickupSound: {fileID: 8300000, guid: cc5eb2516d288474983654a88ef76233, type: 3}
+  DiveSounds:
+  - {fileID: 8300000, guid: 3451a3d40e13e2047aabce12875bc227, type: 3}
+  - {fileID: 8300000, guid: 769adccc315a82343bd58c499a2d04ae, type: 3}
+  WingFlapSounds:
+  - {fileID: 8300000, guid: cde743d7cb5abe143bac9ab9b0845c33, type: 3}
+  - {fileID: 8300000, guid: c735f6e33a7dd6c4cae23cc77973507b, type: 3}
+  - {fileID: 8300000, guid: 360f363752a801e4bac926da96a29253, type: 3}
+  YapSounds:
+  - {fileID: 8300000, guid: c3347a5bbf2feb44eaab8eb9141126f8, type: 3}
+  - {fileID: 8300000, guid: 0eda97887db8eb14b9ff1d0d74d81e69, type: 3}
+  - {fileID: 8300000, guid: acac151e75f81e74fb81f55651c3627f, type: 3}
+  - {fileID: 8300000, guid: 22fddcdd68a33334eada2957cf307b4b, type: 3}
+  - {fileID: 8300000, guid: 346a1b6771276bd499466a3fbc7d2612, type: 3}
+  DeathSound: {fileID: 8300000, guid: 14a455af540fd46488752d09694a4c18, type: 3}
   CrowImage: {fileID: 3001424361457400890}
   swoopTimer: 0
 --- !u!135 &3001424360512367102
@@ -216,6 +240,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 2
+--- !u!82 &5297689250564852491
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001424360512367090}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3001424360687113434
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,9 +378,9 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.8812354, b: 0.75, a: 1}
-  m_Intensity: 0.1
-  m_Range: 10
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -331,11 +451,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3001424361457400893}
-  m_LocalRotation: {x: -0.9063079, y: 0, z: 0, w: 0.42261827}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3001424359941543350}
   m_Father: {fileID: 3001424360512367088}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -130, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

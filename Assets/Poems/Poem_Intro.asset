@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Poem_Intro
+  m_EditorClassIdentifier: Assembly-CSharp::Poem
+  Lines:
+  - Once upon a midnight dreary,
+  - a crow went to visit the goddess Mary.
+  - The goddess looked down from her shiny throne,
+  - at the crow, standing there all alone.
+  - "\u201CMay I sit for just a little while?\u201D"
+  - "\u201CI\u2019ve been flying for many a mile\u201D"
+  - But the goddess shook her head,
+  - And her voice then filled the crow with dread.
+  - "\u201CYou may have a moment at my side\u201D"
+  - "\u201CBut only for an offering!\u201D she cried"
+  - "\u201CAn offering of treasure, of beauty like mine\""
+  - "\u201CTake this magic, to lead you back to my shrine.\u201D"
