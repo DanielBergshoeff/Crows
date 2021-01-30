@@ -7,6 +7,8 @@ public class Narrative : MonoBehaviour
 {
     public static bool InPoem = false;
     public Poem IntroPoem;
+    public Poem Emptyhanded;
+    public Poem FirstItem;
     public TextMeshProUGUI NarrativeText;
     public float TimePerCharacter = 0.1f;
     public float TimePerSentence = 2f;
@@ -17,6 +19,7 @@ public class Narrative : MonoBehaviour
     private int currentLine = 0;
     private float lineTimer = 0f;
     private bool fullLine = false;
+    private int itemsBrought = 0;
 
     private void Start() {
         PlayPoem(IntroPoem);
@@ -63,10 +66,28 @@ public class Narrative : MonoBehaviour
         currentLine = 0;
         InPoem = true;
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!other.CompareTag("Player") || InPoem)
+            return;
+
+        Crow c = other.GetComponent<Crow>();
+        if (c == null)
+            return;
+
+        if(c.ObjectHeld == null) {
+            PlayPoem(Emptyhanded);
+        }
+        else {
+            c.ObjectHeld.tag = "Untagged";
+            c.DropObject();
+
+            itemsBrought++;
+            if(itemsBrought == 1) {
+                PlayPoem(FirstItem);
+            }
+        }
+    }
 }
 
-[CreateAssetMenu]
-public class Poem : ScriptableObject
-{
-    public List<string> Lines;
-}
+

@@ -24,6 +24,13 @@ public class Crow : MonoBehaviour
     public float MinTimeYap = 3f;
     public float MaxTimeYap = 5f;
 
+    [Header("Sprites")]
+    public SpriteRenderer CrowRenderer;
+    public Sprite ForwardSprite;
+    public Sprite BackwardSprite;
+    public Sprite RightSprite;
+    public Sprite LeftSprite;
+
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
     public List<AudioClip> WingFlapSounds;
@@ -36,7 +43,7 @@ public class Crow : MonoBehaviour
     public float swoopTimer = 0f;
     Vector3 moveDir = Vector3.zero;
     Vector3 targetMoveDir = Vector3.zero;
-    private ShinyObject objectHeld;
+    public ShinyObject ObjectHeld;
     private bool inAltar = false;
     private Rigidbody myRigidbody;
     private AudioSource myAudioSource;
@@ -52,6 +59,7 @@ public class Crow : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
+        moveDir = transform.forward;
     }
 
     // Update is called once per frame
@@ -103,18 +111,18 @@ public class Crow : MonoBehaviour
         }
     }
 
-    private void DropObject() {
-        objectHeld.transform.parent = null;
-        objectHeld.GetComponent<Rigidbody>().isKinematic = false;
-        objectHeld.GetComponent<Collider>().enabled = true;
-        objectHeld = null;
+    public void DropObject() {
+        ObjectHeld.transform.parent = null;
+        ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
+        ObjectHeld.GetComponent<Collider>().enabled = true;
+        ObjectHeld = null;
     }
 
     private void Swoop() {
         if (swoopTimer <= 0f)
             return;
 
-        if (inAltar && objectHeld != null) {
+        if (inAltar && ObjectHeld != null) {
             DropObject();
         }
 
@@ -158,11 +166,33 @@ public class Crow : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetMoveDir, Time.deltaTime * RotateSpeed, 0f));*/
 
         if (Input.GetKey(KeyCode.A)) {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, -transform.right, Time.deltaTime * RotateSpeed, 0f));
+            moveDir = Vector3.RotateTowards(moveDir, Quaternion.Euler(0, -45, 0) * moveDir, Time.deltaTime * RotateSpeed, 0f);
         }
         if (Input.GetKey(KeyCode.D)) {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, transform.right, Time.deltaTime * RotateSpeed, 0f));
+            moveDir = Vector3.RotateTowards(moveDir, Quaternion.Euler(0, 45, 0) * moveDir, Time.deltaTime * RotateSpeed, 0f);
         }
+
+        float angle = Vector3.Angle(transform.forward, moveDir);
+        float angleLeft = Vector3.Angle(-transform.right, moveDir);
+        float angleRight = Vector3.Angle(transform.right, moveDir);
+
+        if(angle < 45f) {
+            CrowRenderer.sprite = ForwardSprite;
+            CrowRenderer.flipX = false;
+        }
+        else if(angleLeft < 45f) {
+            CrowRenderer.sprite = RightSprite;
+            CrowRenderer.flipX = true;
+        }
+        else if (angleRight < 45f) {
+            CrowRenderer.sprite = RightSprite;
+            CrowRenderer.flipX = false;
+        }
+        else {
+            CrowRenderer.sprite = BackwardSprite;
+            CrowRenderer.flipX = false;
+        }
+
         //CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
         //transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }
@@ -195,7 +225,7 @@ public class Crow : MonoBehaviour
                 
         }
 
-        transform.position = transform.position + transform.forward * Time.deltaTime * (Speed + currentBonusSpeed);
+        transform.position = transform.position + moveDir * Time.deltaTime * (Speed + currentBonusSpeed);
         myRigidbody.velocity = Vector3.zero;
     }
 
@@ -206,32 +236,32 @@ public class Crow : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (swoopTimer <= 0f || objectHeld != null)
+        if (swoopTimer <= 0f || ObjectHeld != null)
             return;
 
         if (!collision.collider.CompareTag("Shiny"))
             return;
 
-        objectHeld = collision.collider.gameObject.GetComponent<ShinyObject>();
-        objectHeld.transform.parent = transform;
-        objectHeld.transform.localPosition = Vector3.zero;
-        objectHeld.GetComponent<Rigidbody>().isKinematic = true;
-        objectHeld.GetComponent<Collider>().enabled = false;
+        ObjectHeld = collision.collider.gameObject.GetComponent<ShinyObject>();
+        ObjectHeld.transform.parent = transform;
+        ObjectHeld.transform.localPosition = Vector3.zero;
+        ObjectHeld.GetComponent<Rigidbody>().isKinematic = true;
+        ObjectHeld.GetComponent<Collider>().enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Altar")) {
             inAltar = true;
         }
-        else if (other.CompareTag("Glimmer") && objectHeld == null) {
+        else if (other.CompareTag("Glimmer") && ObjectHeld == null) {
             Glimmer g = other.gameObject.GetComponent<Glimmer>();
             GameObject go = Instantiate(g.MyShinyObjectPrefab);
 
-            objectHeld = go.GetComponent<ShinyObject>();
-            objectHeld.transform.parent = transform;
-            objectHeld.transform.localPosition = Vector3.zero;
-            objectHeld.GetComponent<Rigidbody>().isKinematic = true;
-            objectHeld.GetComponent<Collider>().enabled = false;
+            ObjectHeld = go.GetComponent<ShinyObject>();
+            ObjectHeld.transform.parent = transform;
+            ObjectHeld.transform.localPosition = Vector3.zero;
+            ObjectHeld.GetComponent<Rigidbody>().isKinematic = true;
+            ObjectHeld.GetComponent<Collider>().enabled = false;
 
             myAudioSource.PlayOneShot(PickupSound);
 
