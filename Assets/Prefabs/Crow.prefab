@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 3001424360512367089}
   - component: {fileID: 3001424360512367102}
   - component: {fileID: 3001424360512367103}
-  - component: {fileID: 2059533600767938984}
   m_Layer: 0
   m_Name: Crow
   m_TagString: Player
@@ -218,14 +217,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 2
---- !u!81 &2059533600767938984
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3001424360512367090}
-  m_Enabled: 1
 --- !u!1 &3001424360687113434
 GameObject:
   m_ObjectHideFlags: 0
