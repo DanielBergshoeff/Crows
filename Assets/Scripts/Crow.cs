@@ -176,7 +176,7 @@ public class Crow : MonoBehaviour
             Swoop(moveDir);
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && currentBonusFlaps > 0) {
+        if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && currentBonusFlaps > 0) {
             currentBonusSpeed += BonusSpeed;
             currentBonusFlaps--;
             myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
