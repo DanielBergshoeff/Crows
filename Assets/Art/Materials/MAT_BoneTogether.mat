@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_SwordLaying
+  m_Name: MAT_BoneTogether
   m_Shader: {fileID: -6465566751694194690, guid: 5314c4cf87110804e81168e92f9b8898,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E95B7CDE:
-        m_Texture: {fileID: 2800000, guid: c626e1e33536bc44da1e1456b046646d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41c65758c1a84d843948d6ca289c0b7a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_F2BD81FB:
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c626e1e33536bc44da1e1456b046646d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41c65758c1a84d843948d6ca289c0b7a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_B8C8515_Texture_1:
@@ -48,8 +48,8 @@ Material:
     - Boolean_2CFB4E3: 0
     - Boolean_6E60AACA: 1
     - Vector1_278F7BDF: 1
-    - Vector1_77F7A56F: -0.32
-    - Vector1_7E8695CB: -0.12
+    - Vector1_77F7A56F: 0.01
+    - Vector1_7E8695CB: -0.24
     - Vector1_973B4D9C: 0.02
     - Vector1_AC484A0: 1
     - Vector1_AC8EF083: 24.15

@@ -28,12 +28,22 @@ Material:
         m_Texture: {fileID: 2800000, guid: 7140a9bc83a12ea49a081dda89216fff, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3206ade9b56012e44824d010bba2e5cd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_B8C8515_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d75fa24c0928dec4c8a2938c191d9c9c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_BE38B26F_Texture_1:
         m_Texture: {fileID: 2800000, guid: 5cb4e96bfd624464b8e4235f64213466, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Boolean_2CFB4E3: 0
     - Boolean_6E60AACA: 1
+    - Vector1_278F7BDF: 0
     - Vector1_77F7A56F: -0.87
     - Vector1_7E8695CB: -0.12
     - Vector1_973B4D9C: 0.02
