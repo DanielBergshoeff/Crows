@@ -5145,7 +5145,7 @@ PrefabInstance:
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.42261827
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
@@ -5160,7 +5160,7 @@ PrefabInstance:
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9063079
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
@@ -5170,7 +5170,7 @@ PrefabInstance:
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
@@ -5186,6 +5186,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001424361457400890, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001424361457400890, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001424361457400890, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01855d133c8a463479b9ffd957bcc151, type: 3}
