@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_TreeStump
+  m_Name: MAT_Ribs
   m_Shader: {fileID: -6465566751694194690, guid: 5314c4cf87110804e81168e92f9b8898,
     type: 3}
   m_ShaderKeywords: 
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E95B7CDE:
-        m_Texture: {fileID: 2800000, guid: 671489878bda9fb4b9e4b228d0dfb015, type: 3}
+        m_Texture: {fileID: 2800000, guid: e0447e4cd665b074b96ad174f3b16ec9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_F2BD81FB:
@@ -33,7 +33,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cce3f7ee21bfeb54ea790a9a70889ecc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8cd70e84a34fb8c4cb73755504b81ca6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_B8C8515_Texture_1:
@@ -48,12 +48,12 @@ Material:
     - Boolean_2CFB4E3: 0
     - Boolean_6E60AACA: 1
     - Vector1_278F7BDF: 1
-    - Vector1_77F7A56F: -0.32
-    - Vector1_7E8695CB: -0.12
+    - Vector1_77F7A56F: 0.01
+    - Vector1_7E8695CB: -0.24
     - Vector1_973B4D9C: 0.02
     - Vector1_AC484A0: 1
     - Vector1_AC8EF083: 24.15
     m_Colors:
     - Color_34316F73: {r: 1, g: 1, b: 1, a: 0}
     - Color_44AFE7DF: {r: 0.17702028, g: 0.18974663, b: 0.24528301, a: 1}
-    - Color_C88B1C17: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 0}
+    - Color_C88B1C17: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 0}
