@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_Coin
+  m_Shader: {fileID: -6465566751694194690, guid: 5314c4cf87110804e81168e92f9b8898,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_E95B7CDE:
+        m_Texture: {fileID: 2800000, guid: 5bb397212bac8ae4296cc21ba72726df, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_F2BD81FB:
+        m_Texture: {fileID: 2800000, guid: 72ba4154133e79a48983a9ffc081c444, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_BE38B26F_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 5cb4e96bfd624464b8e4235f64213466, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_6E60AACA: 1
+    - Vector1_278F7BDF: 1
+    - Vector1_77F7A56F: 0.1
+    - Vector1_7E8695CB: -0.12
+    - Vector1_973B4D9C: 0.03
+    - Vector1_AC484A0: 1
+    - Vector1_AC8EF083: 0.51
+    m_Colors:
+    - Color_34316F73: {r: 1, g: 1, b: 1, a: 0}
+    - Color_44AFE7DF: {r: 0.17702028, g: 0.18974663, b: 0.24528301, a: 1}
+    - Color_C88B1C17: {r: 1, g: 1, b: 1, a: 0}
