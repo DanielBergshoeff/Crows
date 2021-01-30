@@ -7,12 +7,19 @@ public class Crow : MonoBehaviour
 {
     public Light MyLight;
 
+    [Header("Movement")]
     public float Speed = 1f;
+    public float BonusSpeed = 1f;
+    public int MaxBonusFlaps = 3;
+    public float ReduceBonusSpeed = 0.5f;
+    public float BonusFlapRecoveryTime = 1f;
     public float RotateSpeed = 3f;
     public float SwoopTime = 1f;
     public float SwoopAmount = 0.5f;
     public float Power = 2f;
     public float Height = 0.5f;
+
+    [Header("Audio")]
     public float TimePerFlap = 1f;
     public float MinTimeYap = 3f;
     public float MaxTimeYap = 5f;
@@ -36,6 +43,9 @@ public class Crow : MonoBehaviour
 
     private float flapTimer = 0.1f;
     private float yapTimer = 0.1f;
+    private float currentBonusSpeed = 0f;
+    private int currentBonusFlaps = 3;
+    private float bonusFlapRecovery = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -57,14 +67,13 @@ public class Crow : MonoBehaviour
     }
 
     private void UpdateTimers() {
-        if (flapTimer > 0f) {
+        /*if (flapTimer > 0f) {
             flapTimer -= Time.deltaTime;
             if (flapTimer <= 0f) {
                 myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
                 flapTimer = TimePerFlap;
             }
-
-        }
+        }*/
         if (yapTimer > 0f) {
             yapTimer -= Time.deltaTime;
             if(yapTimer <= 0f) {
@@ -167,7 +176,26 @@ public class Crow : MonoBehaviour
             Swoop(moveDir);
         }
 
-        transform.position = transform.position + transform.forward * Time.deltaTime * Speed;
+        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) && currentBonusFlaps > 0) {
+            currentBonusSpeed += BonusSpeed;
+            currentBonusFlaps--;
+            myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
+        }
+
+        if (currentBonusSpeed > 0f)
+            currentBonusSpeed -= Time.deltaTime * ReduceBonusSpeed;
+
+        if (bonusFlapRecovery > 0f) {
+            bonusFlapRecovery -= Time.deltaTime;
+            if(bonusFlapRecovery <= 0f) {
+                bonusFlapRecovery = BonusFlapRecoveryTime;
+                if (currentBonusFlaps < MaxBonusFlaps)
+                    currentBonusFlaps++;
+            }
+                
+        }
+
+        transform.position = transform.position + transform.forward * Time.deltaTime * (Speed + currentBonusSpeed);
         myRigidbody.velocity = Vector3.zero;
     }
 
