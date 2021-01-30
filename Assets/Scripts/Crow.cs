@@ -87,9 +87,9 @@ public class Crow : MonoBehaviour
     }
 
     private void UpdateLight() {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Return))
             MyLight.enabled = true;
-        else if (Input.GetKeyUp(KeyCode.E)) {
+        else if (Input.GetKeyUp(KeyCode.Return)) {
             MyLight.enabled = false;
         }
     }
