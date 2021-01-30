@@ -5,13 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class Arm : MonoBehaviour
 {
+    public AudioClip HitSound;
+    public AudioClip MoveSound;
+
     private Animator myAnimator;
     private Crow playerInTrigger;
+    private AudioSource myAudioSource;
+    private bool rising = false;
 
     // Start is called before the first frame update
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,22 +26,22 @@ public class Arm : MonoBehaviour
         if (playerInTrigger == null)
             return;
 
-        if(playerInTrigger.swoopTimer > 0f || playerInTrigger.MyLight.enabled) {
+        if((playerInTrigger.swoopTimer > 0f || playerInTrigger.MyLight.enabled) && !rising) {
             myAnimator.SetTrigger("Rise");
+            rising = true;
+            myAudioSource.PlayOneShot(MoveSound);
         }
+    }
+
+    private void ResetRising() {
+        rising = false;
     }
 
     private void CheckForHit() {
         if(playerInTrigger != null) {
-            playerInTrigger.GetComponent<Rigidbody>().useGravity = true;
-            playerInTrigger.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            playerInTrigger.enabled = false;
-            Invoke("RestartGame", 3f);
+            playerInTrigger.GetHit();
+            myAudioSource.PlayOneShot(HitSound);
         }
-    }
-
-    private void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnTriggerEnter(Collider other) {
