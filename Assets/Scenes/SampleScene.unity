@@ -1335,7 +1335,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Once upon a midnight dreary,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2524,6 +2524,7 @@ MonoBehaviour:
   IntroPoem: {fileID: 11400000, guid: 26ae8242d1e939946acdda95a33a186d, type: 2}
   Emptyhanded: {fileID: 11400000, guid: b59fb5713caa47744a497b0b7d581faa, type: 2}
   FirstItem: {fileID: 11400000, guid: 71be69e4fa7c8db48b8ed31ec16c1786, type: 2}
+  SecondItem: {fileID: 11400000, guid: f24164fc81acc3e4fb4d5254660e7a72, type: 2}
   NarrativeText: {fileID: 907915198}
   TimePerCharacter: 0.1
   TimePerSentence: 3

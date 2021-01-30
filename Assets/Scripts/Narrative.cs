@@ -9,6 +9,7 @@ public class Narrative : MonoBehaviour
     public Poem IntroPoem;
     public Poem Emptyhanded;
     public Poem FirstItem;
+    public Poem SecondItem;
     public TextMeshProUGUI NarrativeText;
     public float TimePerCharacter = 0.1f;
     public float TimePerSentence = 2f;
@@ -85,6 +86,9 @@ public class Narrative : MonoBehaviour
             itemsBrought++;
             if(itemsBrought == 1) {
                 PlayPoem(FirstItem);
+            }
+            else if(itemsBrought == 2) {
+                PlayPoem(SecondItem);
             }
         }
     }
