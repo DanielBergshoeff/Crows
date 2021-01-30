@@ -12,6 +12,8 @@ public class Crow : MonoBehaviour
     public float Power = 2f;
     public float Height = 0.5f;
 
+    public Transform CrowImage;
+
     private Vector3 swoopDir;
     public float swoopTimer = 0f;
     Vector3 moveDir = Vector3.zero;
@@ -90,6 +92,8 @@ public class Crow : MonoBehaviour
             moveDir += new Vector3(rightCam.x, 0f, rightCam.z);
         }
         moveDir = moveDir.normalized;
+
+        CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }
 
     private void Move() {
