@@ -9,6 +9,7 @@ TagManager:
   - Arm
   - EnemySpawn
   - ObjectSpawn
+  - Glimmer
   layers:
   - Default
   - TransparentFX
