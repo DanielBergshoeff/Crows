@@ -2425,6 +2425,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: WingFlapSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: WingFlapSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: cde743d7cb5abe143bac9ab9b0845c33, type: 3}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: WingFlapSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c735f6e33a7dd6c4cae23cc77973507b, type: 3}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: WingFlapSounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 360f363752a801e4bac926da96a29253, type: 3}
     - target: {fileID: 3001424360512367090, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_Name

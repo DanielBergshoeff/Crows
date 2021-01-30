@@ -13,9 +13,11 @@ public class Crow : MonoBehaviour
     public float SwoopAmount = 0.5f;
     public float Power = 2f;
     public float Height = 0.5f;
+    public float TimePerFlap = 1f;
 
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
+    public List<AudioClip> WingFlapSounds;
     public AudioClip DeathSound;
 
     public Transform CrowImage;
@@ -34,6 +36,12 @@ public class Crow : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
+        PlayWingFlap();
+    }
+
+    private void PlayWingFlap() {
+        myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
+        Invoke("PlayWingFlap", TimePerFlap);
     }
 
     // Update is called once per frame
