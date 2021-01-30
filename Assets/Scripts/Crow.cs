@@ -24,6 +24,13 @@ public class Crow : MonoBehaviour
     public float MinTimeYap = 3f;
     public float MaxTimeYap = 5f;
 
+    [Header("Sprites")]
+    public SpriteRenderer CrowRenderer;
+    public Sprite ForwardSprite;
+    public Sprite BackwardSprite;
+    public Sprite RightSprite;
+    public Sprite LeftSprite;
+
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
     public List<AudioClip> WingFlapSounds;
@@ -52,6 +59,7 @@ public class Crow : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody>();
         myAudioSource = GetComponent<AudioSource>();
+        moveDir = transform.forward;
     }
 
     // Update is called once per frame
@@ -158,11 +166,33 @@ public class Crow : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetMoveDir, Time.deltaTime * RotateSpeed, 0f));*/
 
         if (Input.GetKey(KeyCode.A)) {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, -transform.right, Time.deltaTime * RotateSpeed, 0f));
+            moveDir = Vector3.RotateTowards(moveDir, Quaternion.Euler(0, -45, 0) * moveDir, Time.deltaTime * RotateSpeed, 0f);
         }
         if (Input.GetKey(KeyCode.D)) {
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, transform.right, Time.deltaTime * RotateSpeed, 0f));
+            moveDir = Vector3.RotateTowards(moveDir, Quaternion.Euler(0, 45, 0) * moveDir, Time.deltaTime * RotateSpeed, 0f);
         }
+
+        float angle = Vector3.Angle(transform.forward, moveDir);
+        float angleLeft = Vector3.Angle(-transform.right, moveDir);
+        float angleRight = Vector3.Angle(transform.right, moveDir);
+
+        if(angle < 45f) {
+            CrowRenderer.sprite = ForwardSprite;
+            CrowRenderer.flipX = false;
+        }
+        else if(angleLeft < 45f) {
+            CrowRenderer.sprite = RightSprite;
+            CrowRenderer.flipX = true;
+        }
+        else if (angleRight < 45f) {
+            CrowRenderer.sprite = RightSprite;
+            CrowRenderer.flipX = false;
+        }
+        else {
+            CrowRenderer.sprite = BackwardSprite;
+            CrowRenderer.flipX = false;
+        }
+
         //CrowImage.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
         //transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }
@@ -195,7 +225,7 @@ public class Crow : MonoBehaviour
                 
         }
 
-        transform.position = transform.position + transform.forward * Time.deltaTime * (Speed + currentBonusSpeed);
+        transform.position = transform.position + moveDir * Time.deltaTime * (Speed + currentBonusSpeed);
         myRigidbody.velocity = Vector3.zero;
     }
 
