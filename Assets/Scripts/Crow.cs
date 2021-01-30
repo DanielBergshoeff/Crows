@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Crow : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class Crow : MonoBehaviour
     public float Power = 2f;
     public float Height = 0.5f;
 
+    public AudioClip PickupSound;
+    public List<AudioClip> DiveSounds;
+    public AudioClip DeathSound;
+
     public Transform CrowImage;
 
     private Vector3 swoopDir;
@@ -22,11 +27,13 @@ public class Crow : MonoBehaviour
     private ShinyObject objectHeld;
     private bool inAltar = false;
     private Rigidbody myRigidbody;
+    private AudioSource myAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +42,18 @@ public class Crow : MonoBehaviour
         UpdateLight();
         Move();
         Swoop();
+    }
+
+    public void GetHit() {
+        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        Invoke("RestartGame", 3f);
+        myAudioSource.PlayOneShot(DeathSound);
+        enabled = false;
+    }
+
+    private void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void UpdateLight() {
@@ -118,6 +137,7 @@ public class Crow : MonoBehaviour
     private void Swoop(Vector3 dir) {
         swoopDir = dir;
         swoopTimer = SwoopTime;
+        myAudioSource.PlayOneShot(DiveSounds[Random.Range(0, DiveSounds.Count)]);
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -147,6 +167,8 @@ public class Crow : MonoBehaviour
             objectHeld.transform.localPosition = Vector3.zero;
             objectHeld.GetComponent<Rigidbody>().isKinematic = true;
             objectHeld.GetComponent<Collider>().enabled = false;
+
+            myAudioSource.PlayOneShot(PickupSound);
 
             Destroy(other.gameObject);
         }
