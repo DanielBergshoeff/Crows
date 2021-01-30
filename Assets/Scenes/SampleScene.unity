@@ -2522,8 +2522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntroPoem: {fileID: 11400000, guid: 26ae8242d1e939946acdda95a33a186d, type: 2}
-  Emptyhanded: {fileID: 0}
-  FirstItem: {fileID: 0}
+  Emptyhanded: {fileID: 11400000, guid: b59fb5713caa47744a497b0b7d581faa, type: 2}
+  FirstItem: {fileID: 11400000, guid: 71be69e4fa7c8db48b8ed31ec16c1786, type: 2}
   NarrativeText: {fileID: 907915198}
   TimePerCharacter: 0.1
   TimePerSentence: 3
@@ -2536,7 +2536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500992721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.78, y: 0.88, z: -1.38}
+  m_LocalPosition: {x: 3.2, y: 0.88, z: -1.38}
   m_LocalScale: {x: 2.3692, y: 1, z: 3.5924447}
   m_Children:
   - {fileID: 91006404}

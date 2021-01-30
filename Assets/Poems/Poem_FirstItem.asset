@@ -12,4 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499acb3469058448b2ad41784a9e3a9, type: 3}
   m_Name: Poem_FirstItem
   m_EditorClassIdentifier: Assembly-CSharp::Poem
-  Lines: []
+  Lines:
+  - After a long flight, the crow returned with riches in his claws,
+  - "certain this would earn him a moment\u2019s pause."
+  - But after just a short moment of rest,
+  - the goddess addressed her honoured guest.
+  - "\u201CYou must go out and search in my stead again\u201D"
+  - On her face an expression of regret and pain.
+  - "\u201CAnything for you, my goddess\u201D the crow said"
+  - Flying out again after bowing his head.

@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499acb3469058448b2ad41784a9e3a9, type: 3}
   m_Name: Poem_Intro
   m_EditorClassIdentifier: Assembly-CSharp::Poem
-  Lines: []
+  Lines:
+  - Once upon a midnight dreary,
+  - a crow went to visit the goddess Mary.
+  - The goddess looked down from her shiny throne,
+  - at the crow, standing there all alone.
+  - "\u201CMay I sit for just a little while?\u201D "
+  - "\u201CI\u2019ve been flying for many a mile\u201D"
+  - But the goddess shook her head,
+  - And her voice then filled the crow with dread.
+  - "\u201CYou may have a moment at my side\u201D"
+  - "\u201CBut only for an offering!\u201D she cried"
+  - "\u201CAn offering of treasure, of beauty like mine\u201D"
+  - "\u201CTake this magic, to lead you back to my shrine.\u201D"

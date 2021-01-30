@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3499acb3469058448b2ad41784a9e3a9, type: 3}
   m_Name: Poem_Emptyhanded
   m_EditorClassIdentifier: Assembly-CSharp::Poem
-  Lines: []
+  Lines:
+  - The crow made his return, emptyhanded.
+  - on the tip of his toes he gently landed.
+  - But there were embers in the goddess's eyes,
+  - so the crow quickly took back to the skies.
