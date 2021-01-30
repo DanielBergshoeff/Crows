@@ -103,7 +103,7 @@ public class Crow : MonoBehaviour
         }
     }
 
-    private void DropObject() {
+    public void DropObject() {
         ObjectHeld.transform.parent = null;
         ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
         ObjectHeld.GetComponent<Collider>().enabled = true;

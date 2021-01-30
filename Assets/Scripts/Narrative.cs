@@ -68,7 +68,7 @@ public class Narrative : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Player"))
+        if (!other.CompareTag("Player") || InPoem)
             return;
 
         Crow c = other.GetComponent<Crow>();
@@ -79,6 +79,8 @@ public class Narrative : MonoBehaviour
             PlayPoem(Emptyhanded);
         }
         else {
+            c.DropObject();
+
             itemsBrought++;
             if(itemsBrought == 1) {
                 PlayPoem(FirstItem);
