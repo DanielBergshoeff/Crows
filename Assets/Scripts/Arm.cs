@@ -7,6 +7,7 @@ public class Arm : MonoBehaviour
 {
     public AudioClip HitSound;
     public AudioClip MoveSound;
+    public Vector2 HitRange;
 
     private Animator myAnimator;
     private Crow playerInTrigger;
@@ -39,8 +40,12 @@ public class Arm : MonoBehaviour
 
     private void CheckForHit() {
         if(playerInTrigger != null) {
-            playerInTrigger.GetHit();
-            myAudioSource.PlayOneShot(HitSound);
+            bool inXRange = IsBetween(playerInTrigger.transform.position.x, transform.position.x - HitRange.x, transform.position.x + HitRange.x);
+            bool inZRange = IsBetween(playerInTrigger.transform.position.z, transform.position.z - HitRange.y, transform.position.z + HitRange.y);
+            if (inXRange && inZRange) {
+                playerInTrigger.GetHit();
+                myAudioSource.PlayOneShot(HitSound);
+            }
         }
     }
 
@@ -48,6 +53,12 @@ public class Arm : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
+        if(other.transform.position.x > transform.position.x) {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
         playerInTrigger = other.gameObject.GetComponent<Crow>();
     }
 
@@ -63,5 +74,9 @@ public class Arm : MonoBehaviour
             return;
 
         CheckForHit();
+    }
+
+    public bool IsBetween(float testValue, float bound1, float bound2) {
+        return (testValue >= Mathf.Min(bound1, bound2) && testValue <= Mathf.Max(bound1, bound2));
     }
 }

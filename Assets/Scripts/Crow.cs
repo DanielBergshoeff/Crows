@@ -13,6 +13,7 @@ public class Crow : MonoBehaviour
 
     [Header("Movement")]
     public float Speed = 1f;
+    public float DiveSpeed = 1.5f;
     public float BonusSpeed = 1f;
     public int MaxBonusFlaps = 3;
     public float ReduceBonusSpeed = 0.5f;
@@ -27,6 +28,8 @@ public class Crow : MonoBehaviour
     public float TimePerFlap = 1f;
     public float MinTimeYap = 3f;
     public float MaxTimeYap = 5f;
+
+    public GameObject DeathPrefab;
 
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
@@ -93,7 +96,9 @@ public class Crow : MonoBehaviour
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         Invoke("RestartGame", 3f);
         myAudioSource.PlayOneShot(DeathSound);
-        enabled = false;
+        GameObject go = Instantiate(DeathPrefab);
+        go.transform.position = transform.position;
+        Destroy(gameObject);
     }
 
     private void RestartGame() {
@@ -179,7 +184,8 @@ public class Crow : MonoBehaviour
                 
         }
 
-        transform.position = transform.position + transform.forward * Time.deltaTime * (Speed + currentBonusSpeed);
+        float s = (swoopTimer <= 0f) ? Speed : DiveSpeed;
+        transform.position = transform.position + transform.forward * Time.deltaTime * (s + currentBonusSpeed);
         myRigidbody.velocity = Vector3.zero;
     }
 

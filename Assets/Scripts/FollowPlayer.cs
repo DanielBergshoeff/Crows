@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    public bool IsLantern;
     public Transform Player;
 
     private Vector3 relativePos;
@@ -17,6 +18,14 @@ public class FollowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Player.transform.position + relativePos;
+        if(Player != null)
+            transform.position = Player.transform.position + relativePos;
+        else {
+            if (IsLantern) {
+                GetComponent<Rigidbody>().isKinematic = false;
+                GetComponent<Collider>().enabled = true;
+                enabled = false;
+            }
+        }
     }
 }
