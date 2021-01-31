@@ -2974,12 +2974,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bba2b238466b5da4b98b1a1f9b4be5fe, type: 3}
---- !u!212 &1903780301 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3001424359941543351, guid: 01855d133c8a463479b9ffd957bcc151,
-    type: 3}
-  m_PrefabInstance: {fileID: 3001424359504108038}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909966406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,6 +3493,11 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3001424359941543351, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3512,7 +3511,7 @@ PrefabInstance:
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.86
+      value: -0.966
       objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367088, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
@@ -3543,7 +3542,7 @@ PrefabInstance:
         type: 3}
       propertyPath: CrowRenderer
       value: 
-      objectReference: {fileID: 1903780301}
+      objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: ForwardSprite
@@ -3573,23 +3572,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crow
       objectReference: {fileID: 0}
-    - target: {fileID: 3001424360512367091, guid: 01855d133c8a463479b9ffd957bcc151,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001424360512367091, guid: 01855d133c8a463479b9ffd957bcc151,
-        type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3001424360512367091, guid: 01855d133c8a463479b9ffd957bcc151,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3001424360512367102, guid: 01855d133c8a463479b9ffd957bcc151, type: 3}
+    - {fileID: 3001424359941543351, guid: 01855d133c8a463479b9ffd957bcc151, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 01855d133c8a463479b9ffd957bcc151, type: 3}
+--- !u!1 &3001424359504108039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3001424360512367090, guid: 01855d133c8a463479b9ffd957bcc151,
+    type: 3}
+  m_PrefabInstance: {fileID: 3001424359504108038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &3001424359504108040
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3001424359504108039}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5076541563261509882
 PrefabInstance:
   m_ObjectHideFlags: 0
