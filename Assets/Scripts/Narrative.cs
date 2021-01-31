@@ -10,11 +10,14 @@ public class Narrative : MonoBehaviour
     public Poem Emptyhanded;
     public Poem FirstItem;
     public Poem SecondItem;
+    public Poem ThirdItem;
     public TextMeshProUGUI NarrativeText;
     public float TimePerCharacter = 0.1f;
     public float TimePerSentence = 2f;
 
     public GameObject NarrativeCanvas;
+    public GameObject TheEnd;
+    public GameObject Tutorials;
 
     private Poem currentPoem;
     private int currentLine = 0;
@@ -25,6 +28,7 @@ public class Narrative : MonoBehaviour
 
     private void Start() {
         if (!introDone) {
+            Tutorials.SetActive(true);
             PlayPoem(IntroPoem);
             introDone = true;
         }
@@ -61,6 +65,10 @@ public class Narrative : MonoBehaviour
         else {
             NarrativeCanvas.SetActive(false);
             InPoem = false;
+
+            if(itemsBrought == 3) {
+                TheEnd.SetActive(true);
+            }
         }
     }
 
@@ -90,9 +98,13 @@ public class Narrative : MonoBehaviour
             itemsBrought++;
             if(itemsBrought == 1) {
                 PlayPoem(FirstItem);
+                Tutorials.SetActive(false);
             }
             else if(itemsBrought == 2) {
                 PlayPoem(SecondItem);
+            }
+            else if(itemsBrought == 3) {
+                PlayPoem(ThirdItem);
             }
         }
     }
