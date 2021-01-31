@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitSound: {fileID: 8300000, guid: fd1457ea5f370984686c8a38040aa67d, type: 3}
   MoveSound: {fileID: 8300000, guid: 8b14931eddb29f144965623fc1f3e50c, type: 3}
-  HitRange: {x: 3, y: 1}
+  HitRange: {x: 2.5, y: 1}
 --- !u!1 &8779373113465004632
 GameObject:
   m_ObjectHideFlags: 0
