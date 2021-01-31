@@ -5,7 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Crow : MonoBehaviour
 {
+    [Header("Light")]
     public Light MyLight;
+    public Material LanternMat;
+    public Texture2D LanternOn;
+    public Texture2D LanternOff;
 
     [Header("Movement")]
     public float Speed = 1f;
@@ -97,10 +101,13 @@ public class Crow : MonoBehaviour
     }
 
     private void UpdateLight() {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return)) {
             MyLight.enabled = true;
+            LanternMat.SetTexture("_MainTex", LanternOn);
+        }
         else if (Input.GetKeyUp(KeyCode.Return)) {
             MyLight.enabled = false;
+            LanternMat.SetTexture("_MainTex", LanternOff);
         }
     }
 
