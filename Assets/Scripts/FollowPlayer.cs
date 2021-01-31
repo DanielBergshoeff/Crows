@@ -24,7 +24,7 @@ public class FollowPlayer : MonoBehaviour
             if (IsLantern) {
                 GetComponent<Rigidbody>().isKinematic = false;
                 GetComponent<Collider>().enabled = true;
-                enabled = false;
+                //enabled = false;
             }
         }
     }

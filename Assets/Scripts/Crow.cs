@@ -117,6 +117,7 @@ public class Crow : MonoBehaviour
         ObjectHeld.transform.parent = null;
         ObjectHeld.GetComponent<Rigidbody>().isKinematic = false;
         ObjectHeld.GetComponent<Collider>().enabled = true;
+        ObjectHeld.transform.rotation = Quaternion.identity;
         ObjectHeld = null;
     }
 
