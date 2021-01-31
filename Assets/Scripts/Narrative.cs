@@ -20,17 +20,21 @@ public class Narrative : MonoBehaviour
     private int currentLine = 0;
     private float lineTimer = 0f;
     private bool fullLine = false;
-    private int itemsBrought = 0;
+    private static int itemsBrought = 0;
+    private static bool introDone;
 
     private void Start() {
-        PlayPoem(IntroPoem);
+        if (!introDone) {
+            PlayPoem(IntroPoem);
+            introDone = true;
+        }
     }
 
     private void Update() {
         if (!InPoem)
             return;
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return)) {
             if (lineTimer <= currentPoem.Lines[currentLine].Length * TimePerCharacter) {
                 lineTimer = currentPoem.Lines[currentLine].Length * TimePerCharacter;
                 NarrativeText.text = currentPoem.Lines[currentLine];

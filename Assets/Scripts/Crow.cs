@@ -30,6 +30,7 @@ public class Crow : MonoBehaviour
     public float MaxTimeYap = 5f;
 
     public GameObject DeathPrefab;
+    public Animator MyAnimator;
 
     public AudioClip PickupSound;
     public List<AudioClip> DiveSounds;
@@ -94,15 +95,11 @@ public class Crow : MonoBehaviour
     public void GetHit() {
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-        Invoke("RestartGame", 3f);
+        GameManager.RestartGame();
         myAudioSource.PlayOneShot(DeathSound);
         GameObject go = Instantiate(DeathPrefab);
         go.transform.position = transform.position;
         Destroy(gameObject);
-    }
-
-    private void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void UpdateLight() {
@@ -169,6 +166,7 @@ public class Crow : MonoBehaviour
             currentBonusSpeed += BonusSpeed;
             currentBonusFlaps--;
             myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
+            MyAnimator.SetTrigger("WingFlap");
         }
 
         if (currentBonusSpeed > 0f)
@@ -193,6 +191,7 @@ public class Crow : MonoBehaviour
         swoopDir = dir;
         swoopTimer = SwoopTime;
         myAudioSource.PlayOneShot(DiveSounds[Random.Range(0, DiveSounds.Count)]);
+        MyAnimator.SetTrigger("Dive");
     }
 
     private void OnCollisionEnter(Collision collision) {
