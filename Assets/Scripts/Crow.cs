@@ -153,6 +153,10 @@ public class Crow : MonoBehaviour
         }
     }
 
+    public void AddBoost() {
+        currentBonusSpeed += BonusSpeed;
+    }
+
     private void Move() {
         if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
             ChangeDir();
@@ -163,7 +167,6 @@ public class Crow : MonoBehaviour
         }
 
         if((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && currentBonusFlaps > 0) {
-            currentBonusSpeed += BonusSpeed;
             currentBonusFlaps--;
             myAudioSource.PlayOneShot(WingFlapSounds[Random.Range(0, WingFlapSounds.Count)]);
             MyAnimator.SetTrigger("WingFlap");

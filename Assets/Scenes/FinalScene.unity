@@ -4440,6 +4440,16 @@ PrefabInstance:
       propertyPath: Height
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: MaxBonusFlaps
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3001424360512367089, guid: 01855d133c8a463479b9ffd957bcc151,
+        type: 3}
+      propertyPath: BonusSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3001424360512367090, guid: 01855d133c8a463479b9ffd957bcc151,
         type: 3}
       propertyPath: m_Name
@@ -8872,6 +8882,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 137432771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &695367193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 217605917620341771, guid: 01855d133c8a463479b9ffd957bcc151,
+    type: 3}
+  m_PrefabInstance: {fileID: 330613982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &695367195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695367193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839a965b27518084ca7176054b98a629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyCrow: {fileID: 0}
 --- !u!1 &698707162
 GameObject:
   m_ObjectHideFlags: 0
