@@ -43,7 +43,7 @@ Material:
     m_Floats:
     - Boolean_2CFB4E3: 0
     - Boolean_6E60AACA: 0
-    - Vector1_278F7BDF: 0
+    - Vector1_278F7BDF: 1
     - Vector1_77F7A56F: -0.87
     - Vector1_7E8695CB: -0.12
     - Vector1_973B4D9C: 0.02
@@ -51,5 +51,5 @@ Material:
     - Vector1_AC8EF083: 24.15
     m_Colors:
     - Color_34316F73: {r: 1, g: 1, b: 1, a: 0}
-    - Color_44AFE7DF: {r: 0.17782128, g: 0.23091234, b: 0.33962262, a: 1}
+    - Color_44AFE7DF: {r: 0.08659667, g: 0.1005181, b: 0.13207549, a: 1}
     - Color_C88B1C17: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0}
